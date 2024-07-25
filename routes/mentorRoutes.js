@@ -112,7 +112,7 @@ router.get("/show/:mentorID", async (req, res) => {
         }
     ]);
 
-    res.status(200).json(MentorData);
+    res.status(200).json({MentorData:MentorData[0]});
   } catch (err) {
     res.status(400).send(err);
   }

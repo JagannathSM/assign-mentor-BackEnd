@@ -146,7 +146,7 @@ router.get("/show/:studentID", async (req, res) => {
       }
     ]);
 
-    res.status(200).json(StudentData);
+    res.status(200).json({StudentData:StudentData[0]});
   } catch (err) {
     res.status(400).json({ message: `Error \b ${err}` });
   }
