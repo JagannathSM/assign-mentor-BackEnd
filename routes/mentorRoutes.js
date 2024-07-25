@@ -61,7 +61,7 @@ router.get("/show", async (req, res) => {
 
     res
       .status(200)
-      .json({ "Total Mentors Count": allmentors.length, allmentors });
+      .json({ "Total_Mentors": allmentors.length, allmentors });
   } catch (err) {
     res.status(400).send(err);
   }

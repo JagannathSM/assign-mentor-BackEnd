@@ -80,7 +80,7 @@ router.get("/show", async (req, res) => {
     ]);
 
     res.status(200).json({
-      "Total Student Count": allstudents.length,
+      "Total_Students": allstudents.length,
       allstudents,
     });
   } catch (err) {
