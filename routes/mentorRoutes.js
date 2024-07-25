@@ -43,14 +43,18 @@ router.get("/show", async (req, res) => {
         },
         {
             $project:{
+                "_id":1,
                 "mentorName":1,
-                "assignedStudents":"$result.studentName"
+                "assignedStudentsName":"$result.studentName",
+                "assignedStudentsID":"$result._id"
             }
         },
         {
             $group:{
-                _id:"$mentorName",
-                "assignedStudents":{$addToSet:"$assignedStudents"}
+                _id:"$_id",
+                "mentorName":{$addToSet:"$mentorName"},
+                "assignedStudentsName":{$addToSet:"$assignedStudentsName"},
+                "assignedStudentsID":{$addToSet:"$assignedStudentsID"}
             }
         }
     ]);
@@ -92,15 +96,19 @@ router.get("/show/:mentorID", async (req, res) => {
         },
         {
             $project:{
-                "mentorName":1,
-                "assignedStudents":"$result.studentName"
-            }
+              "_id":1,
+              "mentorName":1,
+              "assignedStudentsName":"$result.studentName",
+              "assignedStudentsID":"$result._id"
+          }
         },
         {
             $group:{
-                _id:"$mentorName",
-                "assignedStudents":{$addToSet:"$assignedStudents"}
-            }
+              _id:"$_id",
+              "mentorName":{$addToSet:"$mentorName"},
+              "assignedStudentsName":{$addToSet:"$assignedStudentsName"},
+              "assignedStudentsID":{$addToSet:"$assignedStudentsID"}
+          }
         }
     ]);
 
@@ -138,17 +146,17 @@ router.put("/update/:mentorID", async (req, res) => {
         );
       });
       assignedStudents.forEach(async (student) => {
-        const studentData = await Student.find({ _id: student });
-        if (!studentData[0].currentMentor) {
+        const studentData = await Student.findOne({ _id: student });
+        if (!studentData.currentMentor) {
           await Student.updateOne({ _id: student }, { currentMentor: _id });
           return;
           // return res.status(200).json({message:`Successfully Updated ${updateMentor.mentorName}`})
-        } else if (studentData[0].currentMentor == _id) {
+        } else if (studentData.currentMentor == _id) {
           return;
           // return res.status(500).json({message:`Student ${studentData[0].studentName} already assigned for this memtor`})
         } else {
-          const preMentor = studentData[0].currentMentor;
-          const preArrayMenotors = studentData[0].previousMentors;
+          const preMentor = studentData.currentMentor;
+          const preArrayMenotors = studentData.previousMentors;
           if (preArrayMenotors.length == 0) {
             preArrayMenotors.push(preMentor);
             await Student.updateOne(
