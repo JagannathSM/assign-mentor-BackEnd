@@ -161,7 +161,7 @@ router.put("/update/:studentID", async (req, res) => {
     const newMentor = await Mentor.findOne({ _id: currentMentor });
     const allMentor = await Mentor.find();
 
-    if (!currentMentor) {
+    if (!currentMentor || currentMentor == newStudent.currentMentor) {
       await Student.updateOne({ _id }, { studentName });
     } else {
       allMentor.forEach(async (ele) => {

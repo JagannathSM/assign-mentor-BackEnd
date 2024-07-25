@@ -125,6 +125,9 @@ router.put("/update/:mentorID", async (req, res) => {
     const { mentorName, assignedStudents } = req.body;
     const updateMentor = await Mentor.findOne({ _id });
 
+    if(JSON.stringify(assignedStudents)===JSON.stringify(updateMentor.assignedStudents)){
+      await Mentor.updateOne({ _id }, { mentorName });
+    }
     if (!assignedStudents || assignedStudents.length == 0) {
       await Mentor.updateOne({ _id }, { mentorName });
     } else {
