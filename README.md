@@ -26,13 +26,13 @@ END POINTS -
                     FOR STUDENTS DATA :
                     <ul>
                       <li>
-                        <mark>student/show</mark> --{">"} To get all students
+                        <mark>student/show</mark> --> To get all students
                         data. It will show total student count and studentName
                         and there currentMentorName and previous mentorNames in
                         array.
                       </li>
                       <li>
-                        <mark>student/show/:studentID</mark> --{">"} To get
+                        <mark>student/show/:studentID</mark> --> To get
                         specific student data. It shows the studentName and
                         there currentMentorName and previousMentorsName in
                         array.
@@ -43,12 +43,12 @@ END POINTS -
                     FOR MENTORS DATA :
                     <ul>
                       <li>
-                        <mark>mentor/show</mark> --{">"} To get all mentors
+                        <mark>mentor/show</mark> --> To get all mentors
                         data. It will show the total mentors count and
                         mentorName and there assignedStudentsName in array.
                       </li>
                       <li>
-                        <mark>mentor/show/:mentorID</mark> --{">"} To get the
+                        <mark>mentor/show/:mentorID</mark> --> To get the
                         specific mentor data. It shows the mentorName and there
                         assignedStudentsName in array.
                       </li>
@@ -63,7 +63,7 @@ END POINTS -
                     FOR STUDENT DATA :
                     <ul>
                       <li>
-                        <mark>student/add</mark> --{">"} To add initial student
+                        <mark>student/add</mark> --> To add initial student
                         data. It requires only studentName to create.
                         REQUIREMENTS (studentName should be unique).
                       </li>
@@ -73,7 +73,7 @@ END POINTS -
                     FOR MENTOR DATA :
                     <ul>
                       <li>
-                        <mark>mentor/add</mark> --{">"} To add initial mentor
+                        <mark>mentor/add</mark> --> To add initial mentor
                         data. It requires only mentorName to create.
                         REQUIREMENTS (mentorName should be unique).
                       </li>
@@ -88,7 +88,7 @@ END POINTS -
                     FOR STUDENT DATA :
                     <ul>
                       <li>
-                        <mark>student/update/:studentID</mark> --{">"} To assign
+                        <mark>student/update/:studentID</mark> --> To assign
                         currentMentor to the newly created student data / update
                         the currentMentor of specific student data and the
                         currentMentor name will be pushed into the
@@ -102,7 +102,7 @@ END POINTS -
                     FOR MENTOR DATA :
                     <ul>
                       <li>
-                        <mark>mentor/update/:mentorID</mark> --{">"} To assign
+                        <mark>mentor/update/:mentorID</mark> --> To assign
                         multiple students for the specific mentor. REQUIREMENTS
                         ("mentorName":"", "assignedStudents": ["studentID_1", "studentID_2"])
                       </li>
